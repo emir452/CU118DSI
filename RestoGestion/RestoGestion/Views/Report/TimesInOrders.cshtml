@@ -1,0 +1,45 @@
+﻿@model RestoGestion.Models.TimesInOrderData
+<div class="jumbotron">
+    <h1>Reporte de tiempos en pedidos </h1>
+</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Fecha desde ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="dateFrom" id="dateFrom" class="form-control" />
+                @Html.ValidationMessageFor(model => model.dateFrom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Fecha hasta", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="dateTo" id="dateTo" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Estados", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model=>model.states,(SelectList)ViewBag.states, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.Label("Piso", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model=>model.floors,(SelectList)ViewBag.floors, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn-sm" style="background-color:green; color:white" />
+            </div>
+        </div>
+    </div>
+}
+

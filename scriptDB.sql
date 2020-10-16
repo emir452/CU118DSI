@@ -1,0 +1,60 @@
+use DBCu118DSI
+CREATE TABLE State(
+id_state  INT IDENTITY(1,1) PRIMARY KEY,
+name VARCHAR(50) NOT NULL ,
+ambit VARCHAR(50),
+)
+CREATE TABLE Orders(
+id_order INT IDENTITY(1,1) PRIMARY KEY,
+count_footers INT NOT NULL,
+date_order DATETIME NOT NULL,
+
+)
+CREATE TABLE StateHistoryOrder(
+id_history INT IDENTITY(1,1) PRIMARY KEY,
+state INT FOREIGN KEY REFERENCES State,
+date_from  DATETIME NOT NULL,
+date_to DATETIME NOT NULL,
+id_order INT FOREIGN KEY REFERENCES Orders,
+)
+CREATE TABLE OrderDetails(
+id_detail INT IDENTITY(1,1) PRIMARY KEY,
+id_order INT FOREIGN KEY REFERENCES Orders,
+
+)
+CREATE TABLE StateHistoryDetailsOrder(
+id_history INT IDENTITY(1,1) PRIMARY KEY,
+state INT FOREIGN KEY REFERENCES State,
+date_from  DATETIME NOT NULL,
+date_to DATETIME NOT NULL,
+id_detail INT FOREIGN KEY REFERENCES OrderDetails,
+)
+CREATE TABLE Tables( 
+id_table INT IDENTITY(1,1) PRIMARY KEY,
+capacity_footer INT NOT NULL,
+row_in_plane INT,
+space_table  INT,
+order_in_plane INT
+)
+CREATE TABLE Sector(
+id_sector INT IDENTITY(1,1) PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+)
+CREATE TABLE Section(
+id_section INT IDENTITY(1,1) PRIMARY KEY,
+name VARCHAR(50),
+id_table  INT FOREIGN KEY REFERENCES Tables,
+)
+CREATE TABLE SeccionesBySector(
+id_seccionBySector INT IDENTITY(1,1) PRIMARY KEY,
+id_section INT FOREIGN KEY REFERENCES  Section,
+id_sector INT FOREIGN KEY REFERENCES Sector,
+)
+CREATE TABLE Floors(
+id_floor INT IDENTITY(1,1) PRIMARY KEY,
+)
+CREATE TABLE SectorsByFloors(
+id_sectorsByFloors INT IDENTITY(1,1) PRIMARY KEY,
+id_floor INT FOREIGN KEY REFERENCES Floors,
+id_sector INT FOREIGN KEY REFERENCES Sector
+)
