@@ -1,8 +1,8 @@
 ﻿@model RestoGestion.Models.TimesInOrderData
-<div class="jumbotron">
-    <h1>Reporte de tiempos en pedidos </h1>
+<div class=" jumbotron">
+    <h2>Reporte de tiempos en pedidos </h2>
 </div>
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("TimesInOrders","Report", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -36,9 +36,27 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn-sm" style="background-color:green; color:white" />
+            @Html.Label("Sectores", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model=>model.sectors, (SelectList) ViewBag.sectors, htmlAttributes: new { @class = "form-control" })
             </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Criterio de totalización", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div  class="col-md-10">
+@Html.DropDownList("totalizador", (SelectList)ViewBag.optionsTotalization, htmlAttributes: new { @class = "form-control" })
+</div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Confirmar creación de reporte", htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="col-md-10">
+@Html.CheckBox("confirm", false, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear reporte" class="btn-sm" style="background-color:green; color:white" />
+            </div>  
         </div>
     </div>
 }
