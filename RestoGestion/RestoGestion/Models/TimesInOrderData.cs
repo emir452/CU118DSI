@@ -13,5 +13,7 @@ public DateTime dateFrom { get; set;}
         public IList<State> states { get; set;}
         public IList<Floor> floors { get; set; }
         public IList<Sector> sectors { get; set; }
+        public bool confirm { get; set;}
+                public OptionsTotalization optionTotalization { get; set; }
 }
 }

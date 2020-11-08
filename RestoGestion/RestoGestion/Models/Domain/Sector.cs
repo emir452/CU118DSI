@@ -12,7 +12,7 @@ namespace RestoGestion.Models.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sector()
         {
-            SeccionesBySectors = new HashSet<SeccionesBySector>();
+            Sections = new HashSet<Section>();
             SectorsByFloors = new HashSet<SectorsByFloor>();
         }
 
@@ -23,10 +23,15 @@ namespace RestoGestion.Models.Domain
         [StringLength(50)]
         public string name { get; set; }
 
+        public int? floor { get; set; }
+
+        public virtual Floor Floor1 { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SeccionesBySector> SeccionesBySectors { get; set; }
+        public virtual ICollection<Section> Sections { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SectorsByFloor> SectorsByFloors { get; set; }
+        
     }
 }

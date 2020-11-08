@@ -52,6 +52,18 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\Usuario\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -141,28 +153,44 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConstructorArchivoExcel.cs" />
+    <Compile Include="Controllers\ConstructorArchivoPDF.cs" />
+    <Compile Include="Controllers\ConstructorPantallaReporte.cs" />
+    <Compile Include="Controllers\DirectorGeneradorReporte.cs" />
     <Compile Include="Controllers\FloorManager.cs" />
+    <Compile Include="Controllers\GestorGeneradorReporteDeTiemposEnPedidos.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
-    <Compile Include="Controllers\SectorManager.cs" />
-    <Compile Include="Controllers\StateManager.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\IConstructorReporte.cs" />
     <Compile Include="Models\Domain\EntityModel.cs" />
     <Compile Include="Models\Domain\Floor.cs" />
     <Compile Include="Models\Domain\Order.cs" />
     <Compile Include="Models\Domain\OrderDetail.cs" />
-    <Compile Include="Models\Domain\SeccionesBySector.cs" />
     <Compile Include="Models\Domain\Section.cs" />
     <Compile Include="Models\Domain\Sector.cs" />
     <Compile Include="Models\Domain\SectorsByFloor.cs" />
+    <Compile Include="Models\Domain\Session.cs" />
     <Compile Include="Models\Domain\State.cs" />
     <Compile Include="Models\Domain\StateHistoryDetailsOrder.cs" />
     <Compile Include="Models\Domain\StateHistoryOrder.cs" />
+    <Compile Include="Models\Domain\StateNotFoundException.cs" />
     <Compile Include="Models\Domain\sysdiagram.cs" />
     <Compile Include="Models\Domain\Table.cs" />
+    <Compile Include="Models\Domain\User.cs" />
+    <Compile Include="Models\OptionsTotalization.cs" />
+    <Compile Include="Models\OptionsVisualization.cs" />
+    <Compile Include="Controllers\OrderManager.cs" />
+    <Compile Include="Controllers\OrdersBySector.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SectorManager.cs" />
+    <Compile Include="Controllers\StateManager.cs" />
+    <Compile Include="Controllers\StateNotFoundException.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PedidosPorEstadoYSector.cs" />
+    <Compile Include="Models\ReportCustomization.cs" />
     <Compile Include="Models\TimesInOrderData.cs" />
+    <Compile Include="Models\TimesInOrdersReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,8 +202,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -203,6 +236,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Report\TimesInOrders.cshtml" />
     <Content Include="Views\Report\SelectVisualizationMode.cshtml" />
+    <Content Include="Views\Report\ViewReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,5 +23,13 @@ namespace RestoGestion.Models.Domain
         public virtual Order Order { get; set; }
 
         public virtual State State1 { get; set; }
-    }
+public float CalcularDuraciónEnEstado()
+        {
+            return (float) (this.date_to - date_from).TotalMinutes;
+        }
+        public bool EsTuEstado(State state)
+        {
+            return state == State1;
+        }
+}
 }

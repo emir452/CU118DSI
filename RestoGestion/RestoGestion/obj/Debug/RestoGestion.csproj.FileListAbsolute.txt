@@ -97,3 +97,4 @@ D:\CU118DSI\RestoGestion\RestoGestion\bin\es\System.Web.Http.WebHost.resources.d
 D:\CU118DSI\RestoGestion\RestoGestion\obj\Debug\RestoGestion.csproj.CopyComplete
 D:\CU118DSI\RestoGestion\RestoGestion\obj\Debug\RestoGestion.dll
 D:\CU118DSI\RestoGestion\RestoGestion\obj\Debug\RestoGestion.pdb
+D:\CU118DSI\RestoGestion\RestoGestion\bin\Rotativa.dll

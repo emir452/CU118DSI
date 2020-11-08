@@ -26,38 +26,42 @@
         <div class="form-group">
             @Html.Label("Estados", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model=>model.states,(SelectList)ViewBag.states, htmlAttributes: new { @class = "form-control" })
+@Html.ListBoxFor(model=>model.states,(MultiSelectList)ViewBag.states, htmlAttributes: new { @class = "form-control" })
             </div>
         </div> 
         <div class="form-group">
             @Html.Label("Piso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model=>model.floors,(SelectList)ViewBag.floors, htmlAttributes: new { @class = "form-control" })
+                @Html.ListBoxFor(model=>model.floors,(MultiSelectList)ViewBag.floors, htmlAttributes: new { @class = "form-control", multiple = "multiple"})
             </div>
         </div>
         <div class="form-group">
             @Html.Label("Sectores", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model=>model.sectors, (SelectList) ViewBag.sectors, htmlAttributes: new { @class = "form-control" })
+                @Html.ListBoxFor(model=>model.sectors, (MultiSelectList) ViewBag.sectors, htmlAttributes: new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.Label("Criterio de totalización", htmlAttributes: new { @class = "control-label col-md-2" })
             <div  class="col-md-10">
-@Html.DropDownList("totalizador", (SelectList)ViewBag.optionsTotalization, htmlAttributes: new { @class = "form-control" })
+                @Html.EnumDropDownListFor(Model=> Model.optionTotalization, htmlAttributes: new { @class = "form-control" })
 </div>
         </div>
         <div class="form-group">
             @Html.Label("Confirmar creación de reporte", htmlAttributes: new { @class = "control-label col-md-2" })
 <div class="col-md-10">
-@Html.CheckBox("confirm", false, htmlAttributes: new { @class = "form-control" })
+@Html.CheckBoxFor(model=>model.confirm, htmlAttributes: new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Crear reporte" class="btn-sm" style="background-color:green; color:white" />
+                <input type="button" value="Cancelar" class="btn-sm" style="background-color:green; color:white" />
+
             </div>  
         </div>
     </div>
-}
+<div>
+    
+    </div>}
 

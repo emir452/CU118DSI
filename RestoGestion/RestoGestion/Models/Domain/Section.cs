@@ -9,12 +9,6 @@ namespace RestoGestion.Models.Domain
     [Table("Section")]
     public partial class Section
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Section()
-        {
-            SeccionesBySectors = new HashSet<SeccionesBySector>();
-        }
-
         [Key]
         public int id_section { get; set; }
 
@@ -23,9 +17,10 @@ namespace RestoGestion.Models.Domain
 
         public int? id_table { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SeccionesBySector> SeccionesBySectors { get; set; }
+        public int? sector { get; set; }
 
         public virtual Table Table { get; set; }
+
+        public virtual Sector Sector1 { get; set; }
     }
 }

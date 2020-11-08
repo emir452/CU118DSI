@@ -11,6 +11,7 @@ namespace RestoGestion.Models.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Table()
         {
+            Orders = new HashSet<Order>();
             Sections = new HashSet<Section>();
         }
 
@@ -24,6 +25,9 @@ namespace RestoGestion.Models.Domain
         public int? space_table { get; set; }
 
         public int? order_in_plane { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section> Sections { get; set; }

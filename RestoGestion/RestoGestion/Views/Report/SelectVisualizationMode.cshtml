@@ -1,31 +1,37 @@
-﻿<div class="jumbotron">
-    <h2>Elija la forma de visualización</h2>
-</div>
-@using (Html.BeginForm())
+﻿@model RestoGestion.Models.ReportCustomization
+
+@using (Html.BeginForm("SelectVisualizationMode","Report", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ReportCustomization</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Elija el modo de visualizción", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model=>model.optionVisualization, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("comfirme el modo de visualización", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.comfirmVisualizationMode)
+                    @Html.ValidationMessageFor(model => model.comfirmVisualizationMode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
 
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.Label("Seleccionar la forma de visualización", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("optionsVisualization", (SelectList)ViewBag.optionsVisualization, htmlAttributes: new { @class = "form-control" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enviar" class="btn-sm" style="background-color:green; color:white"/>
+            </div>
         </div>
     </div>
-<div class="form-group">
-    @Html.Label("confirmar método de visualización  ", htmlAttributes: new { @class = "control-label col-md-2" })
-<div class="col-md-10">
-    @Html.CheckBox("confirmed", false, htmlAttributes: new { @class = "form-control" })
-
-</div>
-</div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Mostrar reporte" class="btn-sm" style="background-color:green; color:white" />
-        </div>
-    </div>
-</div>
 }
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
